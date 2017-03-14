@@ -16,7 +16,14 @@ var (
 
 	invalidNames = []string{
 		"",
+		".",
 		"*.",
+		"@",
+		"*",
+		"a@",
+		"@a",
+		"a.*",
+		"*.a",
 		"*..",
 		"*.com",
 		"*.*.example.com",
@@ -26,12 +33,6 @@ var (
 		"..invalid",
 		"invalid-too",
 		"com",
-		"@",
-		"*",
-		"a@",
-		"@a",
-		"a.*",
-		"*.a",
 		"*.invalid",
 		"also-invalid..",
 	}
