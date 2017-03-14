@@ -30,11 +30,17 @@ var (
 		"bad.*.example.com",
 		"*.-bad-example.com",
 		"*.bad-example-.too",
+		"bad.   .example.com",
+		"bad. www  .example.com",
+		"bad.www\t.example.com",
 		"..invalid",
 		"invalid-too",
 		"com",
 		"*.invalid",
 		"also-invalid..",
+		"192.168.0.1",
+		" 192.168.0.1 ",
+		" 2001:db8::2:1 ",
 	}
 
 	validWildcards = []string{

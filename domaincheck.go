@@ -2,10 +2,21 @@ package domaincheck
 
 import (
 	"strings"
+
+	"net"
 )
 
 // Valid return true if domain is valid
 func Valid(domain string) bool {
+	trimmed := strings.TrimSpace(domain)
+	if len(trimmed) < len(domain) {
+		return false // reject domain name with leading or trailing spaces
+	}
+	// reject IP address
+	if net.ParseIP(domain) != nil {
+		return false
+	}
+
 	// strip "*." prefix if exists
 	if len(domain) >= 2 && domain[:2] == "*." {
 		domain = domain[2:]
@@ -28,6 +39,11 @@ func Valid(domain string) bool {
 	}
 
 	for _, token := range tokens {
+		trimmed := strings.TrimSpace(token) // trim space-filled token
+		if len(trimmed) < len(token) {
+			return false // reject any token containing space
+		}
+
 		if len(token) == 0 {
 			return false // consecutive '.' is forbidden
 		}
