@@ -23,13 +23,8 @@ func Valid(domain string) bool {
 		domain = domain[2:]
 	}
 
-	// should not see any '*' any more
-	if strings.ContainsAny(domain, "*") {
-		return false
-	}
-
-	// should not contain '@'
-	if strings.ContainsAny(domain, "@") {
+	// should not see any special characters any more
+	if strings.ContainsAny(domain, "~`!@#$%^&*()=+{}[]|\\;:'\",<>/?") {
 		return false
 	}
 
