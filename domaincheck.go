@@ -1,9 +1,8 @@
 package domaincheck
 
 import (
-	"strings"
-
 	"net"
+	"strings"
 )
 
 // Valid return true if domain is valid
