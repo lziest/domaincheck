@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+// Valid return true if domain is valid
 func Valid(domain string) bool {
 	// strip "*." prefix if exists
 	if domain[:2] == "*." {
@@ -35,6 +36,7 @@ func Valid(domain string) bool {
 	return true
 }
 
+// ValidWildcard returns true if domain is a valid wildcard one
 func ValidWildcard(domain string) bool {
 	if Valid(domain) && domain[:2] == "*." {
 		return true
@@ -42,6 +44,7 @@ func ValidWildcard(domain string) bool {
 	return false
 }
 
+// StemDomain returns the stem domain with wildcard prefix stripped (if any).
 func StemDomain(domain string) string {
 	if ValidWildcard(domain) {
 		return domain[2:]
