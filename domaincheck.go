@@ -3,6 +3,8 @@ package domaincheck
 import (
 	"net"
 	"strings"
+
+	"github.com/miekg/dns/idn"
 )
 
 // Valid return true if domain is valid
@@ -76,4 +78,18 @@ func StemDomain(domain string) string {
 	}
 
 	return ""
+}
+
+// PunycodeName returns a punycoded domain name, with wildcard properly prefixed.
+func PunycodeName(domain string) string {
+	// only convert stem domain
+	stem := StemDomain(domain)
+	puny := idn.ToPunycode(stem)
+
+	// treat wildcard
+	if puny != "" && ValidWildcard(domain) {
+		puny = "*." + puny
+	}
+
+	return puny
 }

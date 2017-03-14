@@ -120,3 +120,26 @@ func TestStemDomain(t *testing.T) {
 		}
 	}
 }
+
+func TestPunycodeName(t *testing.T) {
+	for _, domain := range invalidNames {
+		if PunycodeName(domain) != "" {
+			t.Fatal("bad puny code conversion, didn't catch bad name", domain)
+		}
+	}
+
+	p1 := PunycodeName("*.сильныйцветок.рф")
+	if p1 != "*.xn--b1aghehcoluq5b8cl.xn--p1ai" {
+		t.Fatal("bad puny code conversion", p1)
+	}
+
+	p2 := PunycodeName("随便.com")
+	if p2 != "xn--wtq493o.com" {
+		t.Fatal("bad puny code conversion")
+	}
+
+	p3 := PunycodeName("example.com")
+	if p3 != "example.com" {
+		t.Fatal("bad puny code conversion")
+	}
+}
