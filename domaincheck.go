@@ -7,12 +7,17 @@ import (
 // Valid return true if domain is valid
 func Valid(domain string) bool {
 	// strip "*." prefix if exists
-	if domain[:2] == "*." {
+	if len(domain) >= 2 && domain[:2] == "*." {
 		domain = domain[2:]
 	}
 
-	// should not see any '*' any moreA
+	// should not see any '*' any more
 	if strings.ContainsAny(domain, "*") {
+		return false
+	}
+
+	// should not contain '@'
+	if strings.ContainsAny(domain, "@") {
 		return false
 	}
 

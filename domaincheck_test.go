@@ -11,18 +11,27 @@ var (
 		"*.good.example.com",
 		"*.good-example.com",
 		"www.example.com",
+		"*.xn--rger-koa.example.com",
 	}
 
 	invalidNames = []string{
+		"",
 		"*.",
 		"*..",
 		"*.com",
 		"*.*.example.com",
-		"good.*.example.com",
+		"bad.*.example.com",
 		"*.-bad-example.com",
 		"*.bad-example-.too",
 		"..invalid",
 		"invalid-too",
+		"com",
+		"@",
+		"*",
+		"a@",
+		"@a",
+		"a.*",
+		"*.a",
 		"*.invalid",
 		"also-invalid..",
 	}
