@@ -43,6 +43,7 @@ func Valid(domain string) bool {
 
 // ValidWildcard returns true if domain is a valid wildcard one
 func ValidWildcard(domain string) bool {
+	// valid domain should be at least 3 characters long.
 	if Valid(domain) && domain[:2] == "*." {
 		return true
 	}
