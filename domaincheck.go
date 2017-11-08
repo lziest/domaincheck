@@ -4,7 +4,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/miekg/dns/idn"
+	"golang.org/x/net/idna"
 )
 
 // Valid return true if domain is valid
@@ -79,7 +79,10 @@ func StemDomain(domain string) string {
 func PunycodeName(domain string) string {
 	// only convert stem domain
 	stem := StemDomain(domain)
-	puny := idn.ToPunycode(stem)
+	puny, err := idna.ToASCII(stem) // get Punycoded domain name
+	if err != nil {
+		return ""
+	}
 
 	// treat wildcard
 	if puny != "" && ValidWildcard(domain) {

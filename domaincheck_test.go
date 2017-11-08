@@ -133,6 +133,7 @@ func TestPunycodeName(t *testing.T) {
 	}
 
 	p1 := PunycodeName("*.сильныйцветок.рф")
+
 	if p1 != "*.xn--b1aghehcoluq5b8cl.xn--p1ai" {
 		t.Fatal("bad puny code conversion", p1)
 	}
