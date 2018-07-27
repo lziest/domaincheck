@@ -37,6 +37,7 @@ var (
 		"bad.   .example.com",
 		"bad. www  .example.com",
 		"bad.www\t.example.com",
+		"bad.with spaces in middle.com",
 		"..invalid",
 		"invalid-too",
 		"com",

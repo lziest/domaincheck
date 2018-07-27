@@ -28,6 +28,11 @@ func Valid(domain string) bool {
 		return false
 	}
 
+	// should not contain spaces anywhere
+	if strings.Contains(domain, " ") {
+		return false
+	}
+
 	tokens := strings.Split(domain, ".")
 	// should have at least two tokens
 	if len(tokens) < 2 {
