@@ -24,7 +24,7 @@ func Valid(domain string) bool {
 	}
 
 	// should not see any special characters any more
-	if strings.ContainsAny(domain, "~`!@#$%^&*()=+{}[]|\\;:'\",<>/?") {
+	if strings.ContainsAny(domain, "_~`!@#$%^&*()=+{}[]|\\;:'\",<>/?") {
 		return false
 	}
 
