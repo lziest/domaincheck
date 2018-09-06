@@ -34,6 +34,8 @@ var (
 		"bad.*.example.com",
 		"*.-bad-example.com",
 		"*.bad-example-.too",
+		"bad_underscore.example.com",
+		"example_bad.com",
 		"bad.   .example.com",
 		"bad. www  .example.com",
 		"bad.www\t.example.com",
