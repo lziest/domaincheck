@@ -1,6 +1,7 @@
 package domaincheck
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -48,6 +49,8 @@ var (
 		"192.168.0.1",
 		" 192.168.0.1 ",
 		" 2001:db8::2:1 ",
+		`a\x08a.example.com`,
+		fmt.Sprintf("a\x08a.example.com"),
 	}
 
 	validWildcards = []string{

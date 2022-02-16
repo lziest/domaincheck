@@ -3,6 +3,7 @@ package domaincheck
 import (
 	"net"
 	"strings"
+	"unicode"
 
 	"golang.org/x/net/idna"
 )
@@ -51,6 +52,11 @@ func Valid(domain string) bool {
 
 		// token begins or ends with '-' is bad
 		if token[0] == '-' || token[len(token)-1] == '-' {
+			return false
+		}
+	}
+	for _, char := range domain {
+		if !unicode.IsPrint(char) {
 			return false
 		}
 	}
